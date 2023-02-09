@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="de">
+	<head>
+		<title>SMA-Planspiel</title>
+		
+		<style>
+			body {
+				font-size: 40px;
+				background-color: black;
+				color: yellow;
+			}
+			
+			input[type="radio"] {
+			  display: inline-block;
+			  width: 60px;
+			  height: 60px;
+			  border-radius: 50%;
+			  border: 2px solid #000;
+			  margin-right: 10px;
+			}
+			
+			
+			/* Finanzen */
+			.finanzen {
+			  display: flex;
+			  align-items: center;
+			}
+
+			/* Öffentliche Wahrnehmung */
+			.oeffentliche-wahrnehmung {
+			  display: flex;
+			  align-items: center;
+			}
+
+			/* Vertraulichkeit */
+			.vertraulichkeit {
+			  display: flex;
+			  align-items: center;
+			}
+
+			/* Integrität */
+			.integritaet {
+			  display: flex;
+			  align-items: center;
+			}
+
+			/* Verfügbarkeit */
+			.verfuegbarkeit {
+			  display: flex;
+			  align-items: center;
+			}
+			
+			#finance9:before {
+				color: red;
+				background: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<label for="szenario">Szenario:</label>
+		  <select id="szenario" name="szenario">
+			<option value="0" id="szenario1" selected>Szenario 1</option>
+			<option value="1" id="szenario2" >Szenario 2</option>
+			<option value="2" id="szenario3" >Szenario 3</option>
+			<option value="3" id="szenario4" >Szenario 4</option>
+			<option value="4" id="szenario5" >Szenario 5</option>
+			<option value="5" id="szenario6" >Szenario 6</option>
+		  </select>
+	
+		<table>
+			<tr>
+				<th>Bereich</th><th>10k€</th><th>20k€</th><th>30k€</th><th>40k€</th><th>50k€</th><th>60k€</th><th>70k€</th><th>80k€</th><th>90k€</th><th>100k€</th>
+			</tr>
+			<tr>
+				<td><label for="finance">Finanzen</label></td>
+				<td><input type="radio" id="finance1" name="finance" value="1" ></td>
+				<td><input type="radio" id="finance2" name="finance" value="2" ></td>
+				<td><input type="radio" id="finance3" name="finance" value="3" ></td>
+				<td><input type="radio" id="finance4" name="finance" value="4" ></td>
+				<td><input type="radio" id="finance5" name="finance" value="5" ></td>
+				<td><input type="radio" id="finance6" name="finance" value="6" ></td>
+				<td><input type="radio" id="finance7" name="finance" value="7" ></td>
+				<td><input type="radio" id="finance8" name="finance" value="8" ></td>
+				<td><input type="radio" id="finance9" name="finance" value="9" ></td>
+				<td><input type="radio" id="finance10" name="finance" value="10" checked></td>
+			</tr>
+			
+			<tr>
+				<th>Bereich</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th>
+			</tr>
+			
+			<tr>
+				<td><label for="public">Öffentliche Wahrnehmung</label></td>
+				<td><input type="radio" id="public1" name="public" value="1" ></td>
+				<td><input type="radio" id="public2" name="public" value="2" ></td>
+				<td><input type="radio" id="public3" name="public" value="3" ></td>
+				<td><input type="radio" id="public4" name="public" value="4" ></td>
+				<td><input type="radio" id="public5" name="public" value="5" ></td>
+				<td><input type="radio" id="public6" name="public" value="6" checked></td>
+			</tr>
+			
+			<tr>
+				<td><label for="confidentiality">Vertraulichkeit</label></td>
+				<td><input type="radio" id="confidentiality1" name="confidentiality" value="1" ></td>
+				<td><input type="radio" id="confidentiality2" name="confidentiality" value="2" ></td>
+				<td><input type="radio" id="confidentiality3" name="confidentiality" value="3" ></td>
+				<td><input type="radio" id="confidentiality4" name="confidentiality" value="4" ></td>
+				<td><input type="radio" id="confidentiality5" name="confidentiality" value="5" ></td>
+				<td><input type="radio" id="confidentiality6" name="confidentiality" value="6" checked></td>
+			</tr>
+			
+			<tr>
+				<td><label for="integrity">Integrität</label></td>
+				<td><input type="radio" id="integrity1" name="integrity" value="1" ></td>
+				<td><input type="radio" id="integrity2" name="integrity" value="2" ></td>
+				<td><input type="radio" id="integrity3" name="integrity" value="3" ></td>
+				<td><input type="radio" id="integrity4" name="integrity" value="4" ></td>
+				<td><input type="radio" id="integrity5" name="integrity" value="5" ></td>
+				<td><input type="radio" id="integrity6" name="integrity" value="6" checked></td>
+			</tr>
+			
+			<tr>
+				<td><label for="availability">Verfügbarkeit</label></td>
+				<td><input type="radio" id="availability1" name="availability" value="1" ></td>
+				<td><input type="radio" id="availability2" name="availability" value="2" ></td>
+				<td><input type="radio" id="availability3" name="availability" value="3" ></td>
+				<td><input type="radio" id="availability4" name="availability" value="4" ></td>
+				<td><input type="radio" id="availability5" name="availability" value="5" ></td>
+				<td><input type="radio" id="availability6" name="availability" value="6" checked></td>
+			</tr>
+		</table>
+		
+		<div>
+			Runde: <span id="counter">1</span>
+			<button onclick="nextRound()" id="roundButton" >Nächste Runde</button>
+		
+		</div>
+		
+		<script>
+			var json = { "list": [
+						{
+							"name" : "Szenario 1 - SolarWinds (Sunburst Attack) ",
+							"money" : 6,
+							"public": 5,
+							"confidentiality" : 5,
+							"integrity" : 6,
+							"availability" : 6,
+							"perfectRun" : [5,4,4,6,6]
+						},
+						{
+							"name" : "Szenario 2 - Ransomware Angriff bei JBS",
+							"public": 5,
+							"confidentiality" : 4,
+							"integrity" : 4,
+							"availability" : 2,
+							"money" : 10
+						},
+						{
+							"name" : "Jan",
+							"public": 1,
+							"confidentiality" : 1,
+							"integrity" : 1,
+							"availability" : 1,
+							"money" : 1
+						},
+						{
+							"name" : "Szenario 4 - WannaCry: National Health Service (NHS)",
+							"public": 4,
+							"confidentiality" : 6,
+							"integrity" : 5,
+							"availability" : 6,
+							"money" : 9
+						},
+						{
+							"name" : "Szenario 5 - Hackangriff auf Rosneft Deutschland GmbH",
+							"public": 3,
+							"confidentiality" : 2,
+							"integrity" : 4,
+							"availability" : 3,
+							"money" : 7
+						},
+						{
+							"name" : "Szenario 6 - Phising bei Twitter",
+							"public": 5,
+							"confidentiality" : 5,
+							"integrity" : 5,
+							"availability" : 5,
+							"money" : 5
+						}]}
+						
+			const selected = document.getElementById("szenario");
+			const roundCounter = document.getElementById("counter");
+			const szenarios = [document.getElementById("szenario1"), document.getElementById("szenario2"), document.getElementById("szenario3"), document.getElementById("szenario4"), document.getElementById("szenario5"), document.getElementById("szenario6")]
+			const button = document.getElementById("roundButton");
+
+			
+			for(let i = 0; i < szenarios.length; i++){
+				szenarios[i].innerHTML = json.list[i].name;
+			}
+			
+			document.getElementById("finance"+json.list[selected.value].money).checked = true;
+			
+			function setSzenarioWerte(){
+				document.getElementById("finance"+json.list[selected.value].money).checked = true;
+				document.getElementById("public"+json.list[selected.value].public).checked = true;
+				document.getElementById("confidentiality"+json.list[selected.value].confidentiality).checked = true;
+				document.getElementById("integrity"+json.list[selected.value].integrity).checked = true;
+				document.getElementById("availability"+json.list[selected.value].availability).checked = true;
+			}
+			
+			function nextRound(){
+				roundCounter.innerHTML = (parseInt(roundCounter.innerHTML) + 1);
+				if(parseInt(roundCounter.innerHTML) >= 8){
+					stopGame();
+				}else{
+					calIncome();
+				}
+				
+			}
+			
+			function calIncome(){
+				const wahrnehmung = document.getElementById(findChecked("public"));
+				let value = parseInt(wahrnehmung.value);
+				
+				let income = 0;
+				
+				switch(value){
+					case 1:
+						income = -2;
+						break;
+					case 2:
+						income = -1;
+						break;
+					case 4:
+						income = 1;
+						break;
+					case 5:
+						income = 2;
+						break;
+					case 6:
+						income = 3;
+						break
+				}
+				const geld = document.getElementById(findChecked("finance"));
+				value = parseInt(geld.value);
+				if(value + income >= 1 && value + income <= 10){
+					document.getElementById("finance"+(value+income)).checked = true;
+				}else if(value + income > 10){
+					document.getElementById("finance10").checked = true;
+				}else{
+					document.getElementById("finance1").checked = true;
+				}/*else{
+					alert("Game Over");
+				}*/
+			}
+			
+			function findChecked(bereich){
+				const hilf = document.getElementsByName(bereich);
+				
+				for(let i = 0; i < hilf.length; i++){
+					if(hilf[i].checked === true){
+						return ""+bereich+(i+1);
+					}
+				}
+			}
+			
+			function analyseGame(){
+				let s = szenarios[parseInt(selected.value)];
+				let perfectAttributes = json.list[selected.value].perfectRun;
+				document.getElementById("finance"+perfectAttributes[0]).parentNode.style.background = "red";
+				document.getElementById("public"+perfectAttributes[1]).parentNode.style.background = "red";
+				document.getElementById("confidentiality"+perfectAttributes[2]).parentNode.style.background = "red";
+				document.getElementById("integrity"+perfectAttributes[3]).parentNode.style.background = "red";
+				document.getElementById("availability"+perfectAttributes[4]).parentNode.style.background = "red";
+			}
+			
+			function stopGame(){
+				button.remove();
+				analyseGame();
+			}
+			
+			setSzenarioWerte();
+			
+			selected.addEventListener("change", setSzenarioWerte);
+			
+		
+		</script>
+		  
+	</body>
+</html>
