@@ -5,7 +5,7 @@
 		
 		<style>
 			body {
-				font-size: 40px;
+				font-size: 34px;
 				background-color: black;
 				color: yellow;
 			}
@@ -69,7 +69,7 @@
 	
 		<table>
 			<tr>
-				<th>Bereich</th><th>10k€</th><th>20k€</th><th>30k€</th><th>40k€</th><th>50k€</th><th>60k€</th><th>70k€</th><th>80k€</th><th>90k€</th><th>100k€</th>
+				<th>Bereich (x 1000)</th><th>10€</th><th>20€</th><th>30€</th><th>40€</th><th>50€</th><th>60€</th><th>70€</th><th>80€</th><th>90€</th><th>100€</th>
 			</tr>
 			<tr>
 				<td><label for="finance">Finanzen</label></td>
@@ -139,53 +139,69 @@
 		<script>
 			var json = { "list": [
 						{
-							"name" : "Szenario 1 - SolarWinds (Sunburst Attack) ",
+							"name" : "Szenario 1 - SolarWinds",
 							"money" : 6,
 							"public": 5,
 							"confidentiality" : 5,
 							"integrity" : 6,
 							"availability" : 6,
-							"perfectRun" : [5,4,4,6,6]
+							"perfectRun" : [5,4,4,6,6],
+							"rounds" : 7
 						},
 						{
-							"name" : "Szenario 2 - Ransomware Angriff bei JBS",
+							"name" : "Szenario 2 - José Batista Sobrinho (JBS)",
 							"public": 5,
 							"confidentiality" : 4,
 							"integrity" : 4,
 							"availability" : 2,
-							"money" : 10
+							"money" : 10,
+							//Finanzen = 0, Public = 1, Confi = 2, Integrity = 3, Availbility = 4
+							"perfectRun" : [6,5,4,4,5],
+							"rounds" : 6
 						},
 						{
-							"name" : "Jan",
-							"public": 1,
-							"confidentiality" : 1,
-							"integrity" : 1,
-							"availability" : 1,
-							"money" : 1
+							"name" : "Szenario 3 - Uber",
+							"public": 3,
+							"confidentiality" : 2,
+							"integrity" : 4,
+							"availability" : 5,
+							"money" : 8,
+							//Finanzen = 0, Public = 1, Confi = 2, Integrity = 3, Availbility = 4
+							"perfectRun" : [5,6,4,6,4],
+							"rounds" : 6
 						},
 						{
-							"name" : "Szenario 4 - WannaCry: National Health Service (NHS)",
-							"public": 4,
+							"name" : "Szenario 4 - National Health Service (NHS)",
+							"public": 5,
 							"confidentiality" : 6,
 							"integrity" : 5,
 							"availability" : 6,
-							"money" : 9
+							"money" : 9,
+							//Finanzen = 0, Public = 1, Confi = 2, Integrity = 3, Availbility = 4
+							"perfectRun" : [1,5,6,5,6],
+							"rounds" : 7
 						},
 						{
-							"name" : "Szenario 5 - Hackangriff auf Rosneft Deutschland GmbH",
+							"name" : "Szenario 5 - Rosneft Deutschland GmbH",
 							"public": 3,
 							"confidentiality" : 2,
 							"integrity" : 4,
 							"availability" : 3,
-							"money" : 7
+							"money" : 7,
+							//Finanzen = 0, Public = 1, Confi = 2, Integrity = 3, Availbility = 4
+							"perfectRun" : [6,6,6,6,5],
+							"rounds" : 7
 						},
 						{
-							"name" : "Szenario 6 - Phising bei Twitter",
+							"name" : "Szenario 6 - Twitter",
 							"public": 5,
 							"confidentiality" : 5,
 							"integrity" : 5,
 							"availability" : 5,
-							"money" : 5
+							"money" : 5,
+							//Finanzen = 0, Public = 1, Confi = 2, Integrity = 3, Availbility = 4
+							"perfectRun" : [3,6,4,6,4],
+							"rounds" : 8
 						}]}
 						
 			const selected = document.getElementById("szenario");
@@ -210,10 +226,9 @@
 			
 			function nextRound(){
 				roundCounter.innerHTML = (parseInt(roundCounter.innerHTML) + 1);
-				if(parseInt(roundCounter.innerHTML) >= 8){
+				calIncome();
+				if(parseInt(roundCounter.innerHTML) > json.list[selected.value].rounds){
 					stopGame();
-				}else{
-					calIncome();
 				}
 				
 			}
@@ -276,6 +291,7 @@
 			
 			function stopGame(){
 				button.remove();
+				roundCounter.innerHTML = "ENDE";
 				analyseGame();
 			}
 			
