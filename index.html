@@ -129,11 +129,17 @@
 				<td><input type="radio" id="availability6" name="availability" value="6" checked></td>
 			</tr>
 		</table>
+
 		
-		<div>
+		<div style="float:left">
 			Runde: <span id="counter">1</span>
 			<button onclick="nextRound()" id="roundButton" >Nächste Runde</button>
-		
+		</div>
+
+		<div style="float:left;margin-left:600px;">
+			<span id="timer">04:00</span>
+			<button id="start-button">Timer starten</button>
+			<button id="stop-button">Timer abbrechen</button>
 		</div>
 		
 		<script>
@@ -278,6 +284,38 @@
 					}
 				}
 			}
+			
+
+			function startTimer(duration) {
+				var timer = duration, minutes, seconds;
+				var intervalId = setInterval(function () {
+					minutes = parseInt(timer / 60, 10);
+					seconds = parseInt(timer % 60, 10);
+
+					minutes = minutes < 10 ? "0" + minutes : minutes;
+					seconds = seconds < 10 ? "0" + seconds : seconds;
+
+					document.getElementById("timer").innerHTML = minutes + ":" + seconds;
+
+					if (--timer < 0) {
+						clearInterval(intervalId);
+					}
+				}, 1000);
+				return intervalId;
+			}
+
+			var intervalId;
+
+			document.getElementById("start-button").addEventListener("click", function () {
+				intervalId = startTimer(240);
+				document.getElementById("start-button").disabled = true;
+			});
+
+			document.getElementById("stop-button").addEventListener("click", function () {
+				clearInterval(intervalId);
+				document.getElementById("timer").innerHTML = "00:00";
+				document.getElementById("start-button").disabled = false;
+			});
 			
 			function analyseGame(){
 				let s = szenarios[parseInt(selected.value)];
